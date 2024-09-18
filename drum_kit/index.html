@@ -8,58 +8,75 @@
 
 <body class="bg-[url('./assets/images/background.jpg')] bg-cover bg-center flex min-h-screen items-center justify-center">
     <div class="flex">
-        <div data-key="65" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="65" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">A</kbd>
             <span class="text-lg upperace text-slate-500">clap</span>
         </div>
-        <div data-key="83" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="83" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">S</kbd>
             <span class="text-lg upperace text-slate-500">hihat</span>
         </div>
-        <div data-key="68" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="68" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">D</kbd>
             <span class="text-lg upperace text-slate-500">kick</span>
         </div>
-        <div data-key="70" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="70" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">F</kbd>
             <span class="text-lg upperace text-slate-500">openhat</span>
         </div>
-        <div data-key="71" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="71" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">G</kbd>
             <span class="text-lg upperace text-slate-500">boom</span>
         </div>
-        <div data-key="72" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="72" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">H</kbd>
             <span class="text-lg upperace text-slate-500">ride</span>
         </div>
-        <div data-key="74" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="74" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">J</kbd>
             <span class="text-lg upperace text-slate-500">snare</span>
         </div>
-        <div data-key="75" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="75" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">K</kbd>
             <span class="text-lg upperace text-slate-500">tom</span>
         </div>
-        <div data-key="76" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500 back">
+        <div data-key="76" class="border-2 border-black rounded-lg m-4 text-2xl py-4 px-2 transition-all w-40 bg-white text-center text-blue-500" id="key">
             <kbd class="block">L</kbd>
             <span class="text-lg upperace text-slate-500">tink</span>
         </div>
     </div>
 
-    <audio data-key="65" src="sounds/clap.wav"></audio>
-    <audio data-key="83" src="sounds/hihat.wav"></audio>
-    <audio data-key="68" src="sounds/kick.wav"></audio>
-    <audio data-key="70" src="sounds/openhat.wav"></audio>
-    <audio data-key="71" src="sounds/boom.wav"></audio>
-    <audio data-key="72" src="sounds/ride.wav"></audio>
-    <audio data-key="74" src="sounds/snare.wav"></audio>
-    <audio data-key="75" src="sounds/tom.wav"></audio>
-    <audio data-key="76" src="sounds/tink.wav"></audio>
+    <audio data-key="65" src="./assets/sounds/clap.wav"></audio>
+    <audio data-key="83" src="./assets/sounds/hihat.wav"></audio>
+    <audio data-key="68" src="./assets/sounds/kick.wav"></audio>
+    <audio data-key="70" src="./assets/sounds/openhat.wav"></audio>
+    <audio data-key="71" src="./assets/sounds/boom.wav"></audio>
+    <audio data-key="72" src="./assets/sounds/ride.wav"></audio>
+    <audio data-key="74" src="./assets/sounds/snare.wav"></audio>
+    <audio data-key="75" src="./assets/sounds/tom.wav"></audio>
+    <audio data-key="76" src="./assets/sounds/tink.wav"></audio>
 
     <script>
-        window.addEventListener('keydown', function(e){
-            console.log(e);
-        });
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`#key[data-key="${e.keyCode}"]`);
+            if (!audio) return; // stop the function
+            audio.currentTime = 0; // rewind to start
+            audio.play();
+            key.classList.replace('border-black', 'border-green-500');
+            key.classList.add('scale-110', 'shadow-lg');
+        }
+
+        function removeTransition(e){
+            if(e.propertyName !== 'transform')  return; // skip if its not a transform
+            this.classList.replace('border-green-500', 'border-black');
+            this.classList.remove('scale-110', 'shadow-lg');
+            
+        }
+
+        const keys = document.querySelectorAll('#key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
     </script>
 
 </body>
